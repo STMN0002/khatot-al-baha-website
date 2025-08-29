@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khatot Al Baha | Advertising & Fabrication</title>
-    <meta name="description" content="Khatot Al Baha Advertising is a comprehensive advertising, branding, and fabrication company serving businesses across the UAE. We specialize in custom signboards, vehicle branding, printing, and more.">
+    <title>Khoto Al Baha | Advertising & Fabrication</title>
+    <meta name="description" content="Khoto Al Baha Advertising is a comprehensive advertising, branding, and fabrication company proudly serving businesses across the UAE. We specialize in custom signboards, vehicle branding, printing, and more.">
     <link rel="icon" href="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/LOGO.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         :root {
             --color-blue: #0A84D8;
@@ -52,7 +54,7 @@
 
     <header class="header-bg text-white h-screen flex flex-col justify-center items-center text-center p-4">
         <a href="#home">
-            <img src="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/NAME.png" alt="Khatot Al Baha Advertising Logo" class="max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-6">
+            <img src="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/NAME.png" alt="Khoto Al Baha Advertising Logo" class="max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-6">
         </a>
         <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-xl">
             <span class="text-primary-blue block">The Future of Advertising</span>
@@ -71,7 +73,7 @@
                 <div>
                     <h2 class="text-4xl md:text-5xl font-extrabold text-primary-blue mb-4">About Us</h2>
                     <p class="text-xl md:text-2xl text-black font-light leading-relaxed mb-6">
-                        Khatot Al Baha is built on one vision: to provide every advertising solution under one roof, combining creativity, technology, and craftsmanship. We specialize in solutions that turn your ideas into powerful visuals.
+                        Khoto Al Baha is built on one vision: to provide every advertising solution under one roof, combining creativity, technology, and craftsmanship. We specialize in solutions that turn your ideas into powerful visuals.
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed mb-6">
                         With state-of-the-art printing equipment, advanced fabrication facilities, experienced technicians, and innovative designers, we deliver advertising products that are not only attractive but also durable, practical, and cost-effective.
@@ -146,6 +148,29 @@
         </div>
     </section>
 
+    <section id="why-choose-us" class="py-16 md:py-24 px-4">
+        <div class="container mx-auto max-w-7xl text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-black mb-4">Why Choose Khoto Al Baha?</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto">
+                We are more than just a vendor; we are your partner in building a stronger brand.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center border-t-4 border-primary-yellow">
+                    <h4 class="font-bold text-primary-blue text-lg mb-2">One-Stop Solution</h4>
+                    <p class="text-gray-600">From initial concept and design to final installation and maintenance, we handle every step for you.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center border-t-4 border-primary-yellow">
+                    <h4 class="font-bold text-primary-blue text-lg mb-2">Uncompromising Quality</h4>
+                    <p class="text-gray-600">We use only high-grade materials and cutting-edge technology to ensure every product is attractive and durable.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center border-t-4 border-primary-yellow">
+                    <h4 class="font-bold text-primary-blue text-lg mb-2">Proven Reliability</h4>
+                    <p class="text-gray-600">Our skilled team and efficient processes guarantee fast turnaround times and dependable service on every project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="py-16 md:py-24 px-4 bg-black text-white">
         <div class="container mx-auto max-w-4xl text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Contact Our Team</h2>
@@ -177,16 +202,20 @@
         </div>
     </section>
 
-    <footer class="bg-black text-gray-400 py-6 px-4 border-t border-primary-yellow">
+    <footer class="bg-black text-gray-400 py-6 px-4 border-t-2 border-primary-yellow">
         <div class="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
-            <p>&copy; 2024 Khatot Al Baha Advertising. All Rights Reserved.</p>
-            <nav class="space-x-4">
+            <p class="text-sm md:text-base">&copy; <span id="current-year"></span> Khoto Al Baha Advertising. All Rights Reserved.</p>
+            <nav class="space-x-4 text-sm md:text-base">
                 <a href="#about" class="hover:text-primary-blue transition-colors">About Us</a>
                 <a href="#services" class="hover:text-primary-blue transition-colors">Services</a>
                 <a href="#contact" class="hover:text-primary-blue transition-colors">Contact</a>
             </nav>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>

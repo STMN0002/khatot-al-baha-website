@@ -10,6 +10,3 @@ This project aims to develop a highly efficient and reliable website for managin
 - Data retrieval mechanisms
 - User-friendly interface
 - Secure and scalable architecture
-
-## Installation
-1. Clone the repository:

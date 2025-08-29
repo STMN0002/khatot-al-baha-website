@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khatot Al Baha | Advertising & Fabrication</title>
+    <meta name="description" content="Khatot Al Baha Advertising is a comprehensive advertising, branding, and fabrication company serving businesses across the UAE. We specialize in custom signboards, vehicle branding, printing, and more.">
+    <link rel="icon" href="https://i.imgur.com/vHqB3qS.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-blue: #0A84D8;
+            --color-yellow: #FFD700;
+        }
+        .header-bg {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=2940&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .text-primary-blue { color: var(--color-blue); }
+        .bg-primary-blue { background-color: var(--color-blue); }
+        .border-primary-blue { border-color: var(--color-blue); }
+        .text-primary-yellow { color: var(--color-yellow); }
+        .bg-primary-yellow { background-color: var(--color-yellow); }
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .service-card:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--color-yellow);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        .service-card:hover:before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-sans">
+
+    <header class="header-bg text-white h-screen flex flex-col justify-center items-center text-center p-4">
+        <a href="#home">
+            <img src="https://i.imgur.com/Qj4gVz0.png" alt="Khatot Al Baha Advertising Logo" class="max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-6">
+        </a>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-xl">
+            <span class="text-primary-blue block">The Future of Advertising</span>
+            <span class="text-lg md:text-xl lg:text-2xl font-light mt-2 block">Premium Solutions for Your Business</span>
+        </h1>
+        <div class="mt-8">
+            <a href="#services" class="bg-primary-blue text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover:bg-opacity-90">
+                Explore Our Services
+            </a>
+        </div>
+    </header>
+
+    <section id="about" class="py-16 md:py-24 px-4">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-primary-blue mb-4">About Us</h2>
+                    <p class="text-xl md:text-2xl text-black font-light leading-relaxed mb-6">
+                        Khatot Al Baha is built on one vision: to provide every advertising solution under one roof, combining creativity, technology, and craftsmanship. We specialize in solutions that turn your ideas into powerful visuals.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        With state-of-the-art printing equipment, advanced fabrication facilities, experienced technicians, and innovative designers, we deliver advertising products that are not only attractive but also durable, practical, and cost-effective.
+                    </p>
+                </div>
+                <div class="text-center md:text-left">
+                    <img src="https://images.unsplash.com/photo-1579383637171-8575034c562e?q=80&w=2940&auto=format&fit=crop" alt="Our team working in a modern office" class="rounded-xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 md:py-24 px-4 bg-gray-100">
+        <div class="container mx-auto max-w-7xl text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-black mb-4">Our Complete Spectrum of Services</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto">
+                From small printing jobs to large-scale billboards, our diverse capabilities ensure we can meet any advertising challenge.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Small Printing & Branding</h3>
+                    <p class="text-gray-700 mt-2">Business Cards, Flyers, Stickers, NCR Books, and more.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Medium Printing & Display</h3>
+                    <p class="text-gray-700 mt-2">Roll-up Banners, Pop-up Stands, Standees, and Catalogs.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Corporate Gifts & Giveaways</h3>
+                    <p class="text-gray-700 mt-2">Pens, Mugs, T-Shirts, and custom merchandise.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Interior Branding & Office</h3>
+                    <p class="text-gray-700 mt-2">Wall Murals, Frosted Glass Stickers, and Desk Signs.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Outdoor Printing & Advertising</h3>
+                    <p class="text-gray-700 mt-2">Flex Banners, One-Way Vision, Flags, and Tents.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Vehicle Branding</h3>
+                    <p class="text-gray-700 mt-2">Full vehicle wrapping, partial branding, and fleet graphics.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Signage & Fabrication</h3>
+                    <p class="text-gray-700 mt-2">3D Letters, Neon Signs, Lightboxes, and Pylon Signs.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Digital & LED Solutions</h3>
+                    <p class="text-gray-700 mt-2">LED Video Walls, Scrolling Displays, and Digital Billboards.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Exhibition & Events</h3>
+                    <p class="text-gray-700 mt-2">Booth Design, Custom Kiosks, and Event Backdrops.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+                <a href="#" class="service-card relative block bg-white rounded-lg shadow-md p-6 text-left overflow-hidden">
+                    <h3 class="text-2xl font-bold text-primary-blue">Structural & Maintenance</h3>
+                    <p class="text-gray-700 mt-2">Steel Structures, Repairs, and Professional Installation.</p>
+                    <button class="mt-4 text-primary-blue font-semibold hover:underline">View All &rarr;</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 px-4 bg-black text-white">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Contact Our Team</h2>
+            <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                We are always ready to discuss your next project. Feel free to reach out to our management.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 text-left mt-8">
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-primary-yellow mb-2">Owner: M. Gulam Mustafa</h3>
+                    <p class="text-lg text-gray-300">
+                        For business inquiries and partnerships.
+                    </p>
+                    <div class="mt-4 flex items-center space-x-2">
+                        <svg class="w-6 h-6 text-primary-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-2-12h4a1 1 0 010 2h-1v4a1 1 0 01-2 0v-4h-1a1 1 0 010-2z" /></svg>
+                        <a href="tel:+971525191838" class="text-lg font-bold text-white hover:underline">+971 52 51 91 838</a>
+                    </div>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-primary-yellow mb-2">Manager: Mr. Salman</h3>
+                    <p class="text-lg text-gray-300">
+                        For project management and daily operations.
+                    </p>
+                    <div class="mt-4 flex items-center space-x-2">
+                        <svg class="w-6 h-6 text-primary-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10 2.21 0 4.254-.725 5.923-1.95l1.986.662c.168.056.345.088.528.088.29 0 .567-.09.803-.263.236-.174.385-.43.435-.72l.46-2.585c1.474-1.91 2.385-4.265 2.385-6.832C22 6.477 17.523 2 12 2zm3.328 15.655c-.256.442-.647.785-1.12.977-.472.192-1.002.24-1.554.148-1.58-.26-3.076-1.12-4.32-2.363-1.242-1.242-2.102-2.738-2.362-4.32-.092-.552-.044-1.082.148-1.554.192-.473.535-.864.977-1.12L10.35 9.77c.307-.179.645-.268.995-.268.35 0 .688.089.995.268l1.492.864c.25.145.423.407.49.728l.102.46c.07.315.012.63-.167.915l-.864 1.49c-.21.365-.21.82 0 1.185l.864 1.49c.179.307.268.645.268.995 0 .35-.089.688-.268.995L15.328 15.655z" /></svg>
+                        <a href="https://wa.me/971542437877" class="text-lg font-bold text-white hover:underline">+971 5 42 43 78 77</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-gray-400 py-6 px-4 border-t border-primary-yellow">
+        <div class="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
+            <p>&copy; 2024 Khatot Al Baha Advertising. All Rights Reserved.</p>
+            <nav class="space-x-4">
+                <a href="#about" class="hover:text-primary-blue transition-colors">About Us</a>
+                <a href="#services" class="hover:text-primary-blue transition-colors">Services</a>
+                <a href="#contact" class="hover:text-primary-blue transition-colors">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

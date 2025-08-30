@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -70,6 +71,43 @@
         }
         .prev-btn { left: 1rem; }
         .next-btn { right: 1rem; }
+        .contact-card {
+            background-color: #1a1a1a;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        .contact-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #00ADB5;
+            margin-bottom: 0.5rem;
+        }
+        .contact-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .contact-card .icon {
+            font-size: 2.5rem;
+            color: #00ADB5;
+            margin-bottom: 1rem;
+        }
+        .contact-card .contact-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .contact-card .contact-link:hover {
+            color: #00ADB5;
+        }
     </style>
 </head>
 <body class="bg-dark text-light">
@@ -83,6 +121,7 @@
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#leadership" class="nav-link">Our Leadership</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
             <a href="https://wa.me/971556855110" target="_blank" class="hidden md:block bg-primary-teal text-dark font-bold py-2 px-6 rounded-full hover:bg-opacity-80 transition-colors">
@@ -99,6 +138,7 @@
                 <a href="#about" class="nav-link block py-2">About Us</a>
                 <a href="#services" class="nav-link block py-2">Services</a>
                 <a href="#projects" class="nav-link block py-2">Projects</a>
+                <a href="#leadership" class="nav-link block py-2">Our Leadership</a>
                 <a href="#contact" class="nav-link block py-2">Contact</a>
                 <a href="https://wa.me/971556855110" target="_blank" class="block bg-primary-teal text-dark font-bold py-2 px-6 rounded-full hover:bg-opacity-80 transition-colors mt-4">
                     Chat with Owner
@@ -116,9 +156,14 @@
                 <p class="text-lg md:text-2xl text-light max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     Innovative Advertising Solutions for a Modern World
                 </p>
-                <a href="#services" class="bg-primary-teal text-dark font-bold py-4 px-8 rounded-full text-xl hover:bg-opacity-80 transition-colors" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-                    Explore Our Services
-                </a>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
+                    <a href="#contact" class="bg-primary-teal text-dark font-bold py-4 px-8 rounded-full text-xl hover:bg-opacity-80 transition-colors" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                        Submit an Inquiry
+                    </a>
+                    <a href="https://wa.me/971556855110" target="_blank" class="bg-gray-800 text-light font-bold py-4 px-8 rounded-full text-xl hover:bg-primary-teal hover:text-dark transition-colors" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                        Chat with Owner
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -147,52 +192,87 @@
             </div>
         </section>
 
-        <section id="services" class="py-16 md:py-24 px-4 bg-gray-900">
+        <section id="leadership" class="py-16 md:py-24 px-4 bg-gray-900">
+            <div class="container mx-auto text-center max-w-4xl">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6" data-aos="fade-up" data-aos-duration="1000">Meet Our Leadership</h2>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    Our team is committed to delivering excellence through every project.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="contact-card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                        <img src="./images/owner-profile.jpg" alt="Owner Profile" class="rounded-full w-40 h-40 mx-auto mb-4 object-cover">
+                        <h3>Owner</h3>
+                        <p>Driven by vision, innovation, and client success.</p>
+                        <a href="tel:+971556855110" class="contact-link block mt-4"><i class="fas fa-phone-alt"></i> +971 55 685 5110</a>
+                        <a href="mailto:salman.activities@gmail.com" class="contact-link block"><i class="fas fa-envelope"></i> salman.activities@gmail.com</a>
+                        <a href="https://wa.me/971556855110" target="_blank" class="contact-link text-3xl mt-4 inline-block"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="contact-card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">
+                        <img src="./images/manager-profile.jpg" alt="Manager Profile" class="rounded-full w-40 h-40 mx-auto mb-4 object-cover">
+                        <h3>Manager</h3>
+                        <p>Ensuring every project is completed with precision and quality.</p>
+                        <a href="tel:+971556855110" class="contact-link block mt-4"><i class="fas fa-phone-alt"></i> +971 55 685 5110</a>
+                        <a href="mailto:salman.activities@gmail.com" class="contact-link block"><i class="fas fa-envelope"></i> salman.activities@gmail.com</a>
+                        <a href="https://wa.me/971556855110" target="_blank" class="contact-link text-3xl mt-4 inline-block"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-16 md:py-24 px-4 bg-dark">
             <div class="container mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-12" data-aos="fade-up" data-aos-duration="1000">Our Complete Spectrum of Services</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
+                        <i class="fas fa-print text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Small Printing & Branding</h3>
                         <p class="text-gray-400 mb-4">Business Cards, Flyers, Stickers, NCR Books, and more.</p>
                         <a href="small-printing.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
+                        <i class="fas fa-file-image text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Medium Printing & Display</h3>
                         <p class="text-gray-400 mb-4">Roll-up Banners, Pop-up Stands, Standees, and Catalogs.</p>
                         <a href="medium-printing.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+                        <i class="fas fa-gift text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Corporate Gifts & Giveaways</h3>
                         <p class="text-gray-400 mb-4">Pens, Mugs, T-Shirts, and custom merchandise.</p>
                         <a href="corporate-gifts.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
+                        <i class="fas fa-building text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Interior Branding & Office</h3>
                         <p class="text-gray-400 mb-4">Wall Murals, Frosted Glass Stickers, and Desk Signs.</p>
                         <a href="interior-branding.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="1000">
+                        <i class="fas fa-bullhorn text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Outdoor Printing & Advertising</h3>
                         <p class="text-gray-400 mb-4">Flex Banners, One-Way Vision, Flags, and Tents.</p>
                         <a href="outdoor-printing.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
+                        <i class="fas fa-car-side text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Vehicle Branding</h3>
                         <p class="text-gray-400 mb-4">Full vehicle wrapping, partial branding, and fleet graphics.</p>
                         <a href="vehicle-branding.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="1000">
+                        <i class="fas fa-sign text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Signage & Fabrication</h3>
                         <p class="text-gray-400 mb-4">3D & Acrylic Letters, LED Signs, and Stainless Steel Signs.</p>
                         <a href="signage-fabrication.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="800" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="800" data-aos-duration="1000">
+                        <i class="fas fa-tv text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Digital & LED Solutions</h3>
                         <p class="text-gray-400 mb-4">LED Screens & Walls, Digital Kiosks, and Interactive Touchscreens.</p>
                         <a href="digital-led.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-dark rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="1000">
+                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="1000">
+                        <i class="fas fa-th-large text-4xl text-primary-teal mb-4"></i>
                         <h3 class="text-2xl font-bold text-primary-teal mb-4">Exhibition & Events</h3>
                         <p class="text-gray-400 mb-4">Event stands, banners, and backdrops for exhibitions and events.</p>
                         <a href="exhibition-events.html" class="text-primary-teal font-semibold hover:underline">View All →</a>

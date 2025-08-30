@@ -1,303 +1,478 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- Basic Meta-tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khotot Al Baha Advertising</title>
     <meta name="description" content="Khotot Al Baha is a leading advertising agency in Sharjah, UAE. We specialize in printing, fabrication, signage, and cutting-edge digital advertising solutions to help your brand stand out.">
 
-    <link rel="icon" href="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/LOGO.png">
+    <!-- Favicon -->
+    <link rel="icon" href="./images/LOGO.png">
     
+    <!-- External CSS Libraries -->
+    <!-- Tailwind CSS for utility-first styling -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- AOS (Animate on Scroll) for scroll-based animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Custom CSS for custom theme colors, icons, and complex animations -->
     <style>
         /* Custom Color Variables for easy theme management */
         :root {
-            --color-blue: #0A84D8;
-            --color-yellow: #FFD700;
-            --color-dark-blue: #0762A4;
+            --color-dark: #0A0A0A; /* Deep Charcoal/Black for the background */
+            --color-light: #f3f4f6; /* A slightly off-white for text */
+            --color-primary-teal: #00BFA5; /* A vibrant, eye-catching teal */
+            --color-secondary-gold: #FFD700; /* A premium, professional gold */
         }
-        .text-primary-blue { color: var(--color-blue); }
-        .bg-primary-blue { background-color: var(--color-blue); }
-        .border-primary-blue { border-color: var(--color-blue); }
-        .text-primary-yellow { color: var(--color-yellow); }
-        .bg-primary-yellow { background-color: var(--color-yellow); }
+
+        .bg-dark { background-color: var(--color-dark); }
+        .text-light { color: var(--color-light); }
+        .text-primary-teal { color: var(--color-primary-teal); }
+        .bg-primary-teal { background-color: var(--color-primary-teal); }
+        .border-primary-teal { border-color: var(--color-primary-teal); }
+        .text-secondary-gold { color: var(--color-secondary-gold); }
+        .bg-secondary-gold { background-color: var(--color-secondary-gold); }
         
-        /* Hero Section Background with a stylish overlay */
+        /* Hero Section Background with a subtle gradient and pattern */
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549491629-9e8c47f7d45e?q=80&w=2940&auto=format&fit=crop');
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 191, 165, 0.05) 0%, transparent 70%), url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%232d2d2d" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zm1 5v1H5z"/%3E%3C/g%3E%3C/svg%3E');
             background-size: cover;
             background-position: center;
         }
 
-        /* Custom animation for social media icons */
-        .social-icon-hover:hover {
-            transform: scale(1.1);
-            color: var(--color-blue);
+        /* Pulse animation for the WhatsApp button */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--color-primary-teal); }
+            50% { text-shadow: 0 0 20px var(--color-primary-teal), 0 0 30px var(--color-primary-teal); }
+            100% { text-shadow: 0 0 5px var(--color-primary-teal); }
+        }
+        .text-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Hero text animation on load */
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slideIn {
+            animation: slideInFromTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        /* Service card icon styling with SVG filter for glow effect */
+        .service-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            fill: var(--color-secondary-gold);
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+            transition: transform 0.4s ease-in-out;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+        }
+        
+        /* Custom image carousel styling */
+        .carousel-images img {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .carousel-images img.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Floating WhatsApp button pulse animation */
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 191, 165, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 191, 165, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 191, 165, 0); }
+        }
+        .whatsapp-pulse {
+            animation: whatsapp-pulse 2s infinite;
         }
     </style>
 </head>
 
-<body class="bg-white text-black font-sans">
+<body class="bg-dark text-light font-sans">
 
-    <a href="https://wa.me/971542437877" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors" target="_blank" aria-label="Chat with us on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="feather feather-whatsapp"><path d="M12.04 2C7.03 2 3 6.03 3 11.04c0 1.76.5 3.42 1.45 4.86L3.1 19l3.43-1.04a8.88 8.88 0 005.5-1.92L12.04 2zM18.8 17.5l-1.94-.95a6.52 6.52 0 00-3.32-.9c-1.2 0-2.3.4-3.2 1.1s-1.4 2.5-1.4 4.1L12.04 22c5.01 0 9.04-4.03 9.04-9.04 0-2.45-1-4.7-2.6-6.4C17.15 4.85 14.88 4 12.04 4c-1.5 0-2.9.4-4.1 1.1l-1.94.95a6.52 6.52 0 00-3.32-.9c-1.2 0-2.3.4-3.2 1.1s-1.4 2.5-1.4 4.1L12.04 22c5.01 0 9.04-4.03 9.04-9.04 0-2.45-1-4.7-2.6-6.4C17.15 4.85 14.88 4 12.04 4zM12.04 2c-5.52 0-10 4.48-10 10 0 1.78.48 3.44 1.35 4.84L2 22l5.17-1.57A9.99 9.99 0 0012.04 22c5.52 0 10-4.48 10-10S17.56 2 12.04 2zm3.32 15.66c-.46.8-1.07 1.4-1.78 1.83-.72.43-1.53.64-2.4.64-1.68 0-3.13-.53-4.32-1.59s-1.8-2.58-1.8-4.5v-.5c0-.66.54-1.2 1.2-1.2s1.2.54 1.2 1.2v.5c0 1.5.7 2.6 2.1 3.2.7.3 1.5.4 2.4.4.8 0 1.5-.2 2.2-.6.7-.4 1.2-1 1.5-1.7.3-.7.4-1.5.3-2.3-.1-.8-.4-1.5-1.1-2.1-.7-.6-1.5-1-2.4-1.2-.9-.2-1.8-.1-2.6.2-.8.3-1.5.8-2.1 1.4-.6.6-1 1.3-1.3 2.1-.3.8-.4 1.6-.2 2.4l.2.8c.1.4-.1.8-.4 1.2s-.7.5-1.1.4c-.4-.1-.7-.4-.8-.8l-.3-1.1c-.2-.7-.1-1.4.2-2.1.4-.8.9-1.6 1.7-2.2s1.7-1 2.7-1.2c1.1-.1 2.2.1 3.2.5s1.8 1.1 2.4 2c.6.9.9 2 1 3.2.1 1.2-.1 2.3-.6 3.4z" /></svg>
+    <!-- ======================== Floating WhatsApp Button ======================== -->
+    <a href="https://wa.me/971542437877" class="fixed bottom-6 right-6 z-50 bg-primary-teal text-dark p-3 rounded-full shadow-lg hover:bg-opacity-80 transition-colors whatsapp-pulse" target="_blank" aria-label="Chat with us on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="feather feather-whatsapp"><path d="M12.04 2C7.03 2 3 6.03 3 11.04c0 1.76.5 3.42 1.45 4.86L3.1 19l3.43-1.04a8.88 8.88 0 005.5-1.92L12.04 2zM18.8 17.5l-1.94-.95a6.52 6.52 0 00-3.32-.9c-1.2 0-2.3.4-3.2 1.1s-1.4 2.5-1.4 4.1L12.04 22c5.01 0 9.04-4.03 9.04-9.04 0-2.45-1-4.7-2.6-6.4C17.15 4.85 14.88 4 12.04 4c-1.5 0-2.9.4-4.1 1.1l-1.94.95a6.52 6.52 0 00-3.32-.9c-1.2 0-2.3.4-3.2 1.1s-1.4 2.5-1.4 4.1L12.04 22c5.01 0 9.04-4.03 9.04-9.04 0-2.45-1-4.7-2.6-6.4z" /></svg>
     </a>
 
-    <header class="bg-black py-4 px-4 text-white">
+    <!-- ======================== Header & Main Navigation ======================== -->
+    <header class="bg-dark py-4 px-4 text-light sticky top-0 z-50 shadow-md border-b-2 border-primary-teal">
         <div class="container mx-auto max-w-7xl flex items-center justify-between">
-            <a href="index.html">
-                <img src="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/NAME.png" alt="Khotot Al Baha Advertising Logo" class="h-10 md:h-12">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="./images/LOGO.png" alt="Khotot Al Baha Advertising Logo" class="h-10 md:h-12">
             </a>
             <nav class="space-x-4 text-sm md:text-base hidden md:block">
-                <a href="#about" class="hover:text-primary-blue transition-colors duration-300">About Us</a>
-                <a href="#services" class="hover:text-primary-blue transition-colors duration-300">Services</a>
-                <a href="#projects" class="hover:text-primary-blue transition-colors duration-300">Projects</a>
-                <a href="#contact" class="hover:text-primary-blue transition-colors duration-300">Contact</a>
+                <a href="#about" class="hover:text-primary-teal transition-colors duration-300">About Us</a>
+                <a href="#services" class="hover:text-primary-teal transition-colors duration-300">Services</a>
+                <a href="#projects" class="hover:text-primary-teal transition-colors duration-300">Projects</a>
+                <a href="#contact" class="hover:text-primary-teal transition-colors duration-300">Contact</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero-bg text-white py-24 md:py-32 px-4">
+    <!-- ======================== Hero Section ======================== -->
+    <section class="hero-bg text-light py-24 md:py-32 px-4">
         <div class="container mx-auto max-w-7xl text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4" data-aos="fade-up" data-aos-duration="1200">The Future of Advertising</h1>
-            <p class="text-lg md:text-2xl font-light text-gray-200 mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">Premium Solutions for Your Business</p>
-            <a href="#services" class="bg-primary-blue text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-80 transition-colors inline-block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1200">Explore Our Services</a>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-glow animate-slideIn" data-aos="fade-up" data-aos-duration="1200">Crafting Visual Impact</h1>
+            <p class="text-lg md:text-2xl font-light text-gray-300 mb-8 animate-slideIn" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">Innovative Advertising Solutions for a Modern World</p>
+            <a href="#services" class="bg-primary-teal text-dark font-bold py-3 px-8 rounded-full hover:bg-opacity-80 transition-colors inline-block transform hover:scale-105 animate-slideIn" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1200">Explore Our Services</a>
         </div>
     </section>
 
-    <section id="about" class="py-16 md:py-24 px-4 bg-white">
+    <!-- ======================== About Us Section ======================== -->
+    <section id="about" class="py-16 md:py-24 px-4 bg-dark">
         <div class="container mx-auto max-w-7xl grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right" data-aos-duration="1500">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-blue mb-6">About Us</h2>
-                <p class="text-lg md:text-xl text-black font-light leading-relaxed mb-4">
-                    Khotot Al Baha is built on one vision: to provide every advertising solution under one roof, combining creativity, technology, and craftsmanship. We specialize in solutions that turn your ideas into powerful visuals.
+                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6">About Us</h2>
+                <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-4">
+                    Khotot Al Baha is driven by a single purpose: to provide every advertising solution under one roof, seamlessly blending creativity, technology, and meticulous craftsmanship. We specialize in transforming your unique concepts into powerful, lasting visuals.
                 </p>
-                <p class="text-lg md:text-xl text-black font-light leading-relaxed">
-                    With state-of-the-art printing equipment, advanced fabrication facilities, experienced technicians, and innovative designers, we deliver advertising products that are not only attractive but also durable, practical, and cost-effective.
+                <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                    With our advanced printing equipment, cutting-edge fabrication facilities, and a team of expert technicians and innovative designers, we deliver advertising products that are not only visually stunning but also durable, practical, and highly effective.
                 </p>
             </div>
             <div class="md:block" data-aos="fade-left" data-aos-duration="1500">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2940&auto=format&fit=crop" alt="Our team working in a modern office" class="rounded-lg shadow-xl w-full">
+                <img src="./images/about-us.jpg" alt="Our team working in a modern office" class="rounded-lg shadow-xl w-full">
             </div>
         </div>
     </section>
 
-    <section class="py-16 md:py-24 px-4 bg-gray-50">
-        <div class="container mx-auto max-w-7xl text-center">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-black mb-6" data-aos="fade-up" data-aos-duration="1000">Why Choose Khotot Al Baha?</h2>
-            <p class="text-lg md:text-xl text-gray-700 font-light leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                We are more than just a vendor; we are your partner in building a stronger brand.
-            </p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold text-primary-blue mb-2">One-Stop Solution</h3>
-                    <p class="text-gray-600">From initial concept and design to final installation and maintenance, we handle every step for you.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-                    <h3 class="text-2xl font-bold text-primary-blue mb-2">Uncompromising Quality</h3>
-                    <p class="text-gray-600">We use only high-grade materials and cutting-edge technology to ensure every product is attractive and durable.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
-                    <h3 class="text-2xl font-bold text-primary-blue mb-2">Proven Reliability</h3>
-                    <p class="text-gray-600">Our skilled team and efficient processes guarantee fast turnaround times and dependable service on every project.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 md:py-24 px-4 bg-white">
-        <div class="container mx-auto max-w-7xl text-center">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-black mb-6" data-aos="fade-up" data-aos-duration="1000">Our Process</h2>
-            <p class="text-lg md:text-xl text-gray-700 font-light leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                We follow a simple, transparent process to bring your vision to life.
-            </p>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                    <div class="bg-primary-blue text-white w-16 h-16 flex items-center justify-center rounded-full text-2xl font-bold mb-4">1</div>
-                    <h3 class="text-xl font-bold mb-2">Consultation</h3>
-                    <p class="text-gray-600 text-sm">We discuss your needs, goals, and budget to create a tailored solution.</p>
-                </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                    <div class="bg-primary-blue text-white w-16 h-16 flex items-center justify-center rounded-full text-2xl font-bold mb-4">2</div>
-                    <h3 class="text-xl font-bold mb-2">Design & Approval</h3>
-                    <p class="text-gray-600 text-sm">Our team designs concepts for your approval before production begins.</p>
-                </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                    <div class="bg-primary-blue text-white w-16 h-16 flex items-center justify-center rounded-full text-2xl font-bold mb-4">3</div>
-                    <h3 class="text-xl font-bold mb-2">Production</h3>
-                    <p class="text-gray-600 text-sm">We use advanced technology to manufacture your products with precision and quality.</p>
-                </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="700" data-aos-duration="1000">
-                    <div class="bg-primary-blue text-white w-16 h-16 flex items-center justify-center rounded-full text-2xl font-bold mb-4">4</div>
-                    <h3 class="text-xl font-bold mb-2">Installation</h3>
-                    <p class="text-gray-600 text-sm">Our expert team handles the final installation with care and efficiency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-16 md:py-24 px-4 bg-gray-50">
+    <!-- ======================== Services Section with Custom Icons ======================== -->
+    <section id="services" class="py-16 md:py-24 px-4 bg-dark">
         <div class="container mx-auto max-w-7xl">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-primary-blue text-center mb-6" data-aos="fade-up" data-aos-duration="1000">Our Complete Spectrum of Services</h2>
-            <p class="text-lg md:text-xl text-gray-700 font-light text-center leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                From small printing jobs to large-scale billboards, our diverse capabilities ensure we can meet any advertising challenge.
+            <h2 class="text-5xl md:text-6xl font-extrabold text-light text-center mb-6" data-aos="fade-up" data-aos-duration="1000">Our Spectrum of Services</h2>
+            <p class="text-lg md:text-xl text-gray-400 font-light text-center leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                From small branding jobs to large-scale fabrication, we offer a comprehensive suite of solutions.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <a href="small-printing.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold text-black mb-2">Small Printing & Branding</h3>
-                    <p class="text-gray-600">Business cards, flyers, stickers, and more.</p>
+                <!-- Small Printing & Branding -->
+                <a href="small-printing.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 12H4V8h16v10zM17 11c0-1.1-.9-2-2-2h-2v2h2v2h-2v2h2c1.1 0 2-.9 2-2v-2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Small Printing & Branding</h3>
+                        <p class="text-gray-500">Business cards, flyers, stickers, and more.</p>
+                    </div>
                 </a>
-                <a href="medium-printing.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-xl font-bold text-black mb-2">Medium Printing & Display</h3>
-                    <p class="text-gray-600">Brochures, posters, standees, and display stands.</p>
+                <!-- Medium Printing & Display -->
+                <a href="medium-printing.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M22 13h-4v2h4v-2zm0-4h-4v2h4V9zm-4-6v1.9c-.83-.07-1.68-.1-2.52-.1-.84 0-1.69.03-2.52.1V3H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H8V5h8v2h-2v2h-2v2h-2v2h2v2h2v-2h2v-2h2v-2zm-6-8h-2v-2h2v2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Medium Printing & Display</h3>
+                        <p class="text-gray-500">Brochures, posters, standees, and display stands.</p>
+                    </div>
                 </a>
-                <a href="corporate-gifts.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-xl font-bold text-black mb-2">Corporate Gifts & Giveaways</h3>
-                    <p class="text-gray-600">Branded pens, mugs, t-shirts, and custom items.</p>
+                <!-- Corporate Gifts & Giveaways -->
+                <a href="corporate-gifts.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2a6 6 0 00-6 6c0 3.32 2.68 6 6 6s6-2.68 6-6a6 6 0 00-6-6zm0 10a4 4 0 110-8 4 4 0 010 8zm-2 11h4a1 1 0 000-2h-4a1 1 0 000 2zM6 13h12a1 1 0 000-2H6a1 1 0 000 2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Corporate Gifts & Giveaways</h3>
+                        <p class="text-gray-500">Branded pens, mugs, t-shirts, and custom items.</p>
+                    </div>
                 </a>
-                <a href="interior-branding.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="text-xl font-bold text-black mb-2">Interior Branding & Office</h3>
-                    <p class="text-gray-600">Wall murals, frosted glass stickers, and office signs.</p>
+                <!-- Interior Branding & Office -->
+                <a href="interior-branding.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M21 14h-6v6h-2v-6H7v-2h6V6h2v6h6v2zM5 21h14v-4H5v4zm0-6h14v-4H5v4zM5 9h14V5H5v4z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Interior Branding & Office</h3>
+                        <p class="text-gray-500">Wall murals, frosted glass stickers, and office signs.</p>
+                    </div>
                 </a>
-                <a href="outdoor-printing.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
-                    <h3 class="text-xl font-bold text-black mb-2">Outdoor Printing & Advertising</h3>
-                    <p class="text-gray-600">Billboards, banners, flags, and large format printing.</p>
+                <!-- Outdoor Printing & Advertising -->
+                <a href="outdoor-printing.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4.14L18.06 19H5.94L12 6.14zM11 10h2v7h-2v-7zm0 8h2v2h-2v-2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Outdoor Printing & Advertising</h3>
+                        <p class="text-gray-500">Billboards, banners, flags, and large format printing.</p>
+                    </div>
                 </a>
-                <a href="vehicle-branding.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="600">
-                    <h3 class="text-xl font-bold text-black mb-2">Vehicle Branding</h3>
-                    <p class="text-gray-600">Car graphics, fleet wraps, and mobile advertising.</p>
+                <!-- Vehicle Branding -->
+                <a href="vehicle-branding.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M17 12c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5zm-5 3a3 3 0 100-6 3 3 0 000 6zm0 2c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm4-12c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2h8v-2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Vehicle Branding</h3>
+                        <p class="text-gray-500">Car graphics, fleet wraps, and mobile advertising.</p>
+                    </div>
                 </a>
-                <a href="signage-fabrication.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="700">
-                    <h3 class="text-xl font-bold text-black mb-2">Signage & Fabrication</h3>
-                    <p class="text-gray-600">3D signs, acrylic letters, and LED signboards.</p>
+                <!-- Signage & Fabrication -->
+                <a href="signage-fabrication.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="700">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M15 15h4v4h-4v-4zm-4 4h4v4h-4v-4zm0-4h4v4h-4v-4zm-4 4h4v4H7v-4zm0-4h4v4H7v-4zm0-4h4v4H7v-4zM7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Signage & Fabrication</h3>
+                        <p class="text-gray-500">3D signs, acrylic letters, and LED signboards.</p>
+                    </div>
                 </a>
-                <a href="digital-led.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="800">
-                    <h3 class="text-xl font-bold text-black mb-2">Digital & LED Solutions</h3>
-                    <p class="text-gray-600">LED screens, video walls, and digital billboards.</p>
+                <!-- Digital & LED Solutions -->
+                <a href="digital-led.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="800">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M17 19h-10c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM9 9h6v6H9V9zm-2 2h2v2H7v-2zM15 7h2v2h-2V7zM7 7h2v2H7V7zM15 15h2v2h-2v-2z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Digital & LED Solutions</h3>
+                        <p class="text-gray-500">LED screens, video walls, and digital billboards.</p>
+                    </div>
                 </a>
-                <a href="exhibition-events.html" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="900">
-                    <h3 class="text-xl font-bold text-black mb-2">Exhibition & Events</h3>
-                    <p class="text-gray-600">Exhibition stands, pop-up booths, and event graphics.</p>
+                <!-- Exhibition & Events -->
+                <a href="exhibition-events.html" class="service-card block bg-gray-900 p-8 rounded-lg shadow-xl hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="900">
+                    <div class="flex flex-col items-center text-center">
+                        <svg class="service-icon mb-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM3 5h18v14H3V5zm10 12h-2v2h2v-2zm0-4h-2v2h2v-2zm0-4h-2v2h2v-2zm-4 8h-2v2h2v-2zM9 9h2v2H9V9zm0 4h2v2H9v-2zm4 0h-2v2h2v-2zm0-4h-2v2h2V9z" /></svg>
+                        <h3 class="text-xl font-bold text-secondary-gold mb-2">Exhibition & Events</h3>
+                        <p class="text-gray-500">Exhibition stands, pop-up booths, and event graphics.</p>
+                    </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-16 md:py-24 px-4 bg-white">
+    <!-- ======================== Our Projects Section with Image Carousel ======================== -->
+    <section id="projects" class="py-16 md:py-24 px-4 bg-dark">
         <div class="container mx-auto max-w-7xl text-center">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-black mb-6" data-aos="fade-up" data-aos-duration="1000">Featured Projects</h2>
-            <p class="text-lg md:text-xl text-gray-700 font-light leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-light mb-6" data-aos="fade-up" data-aos-duration="1000">Our Projects</h2>
+            <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                 A selection of our latest and most impactful work.
             </p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e10d65a88c2?q=80&w=2940&auto=format&fit=crop" alt="Branded office interior" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Office Interior Branding</h3>
-                        <p class="text-gray-600">Creating a cohesive and professional look for a corporate office space.</p>
-                    </div>
+
+            <div class="carousel-container relative rounded-lg shadow-xl" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <div class="carousel-images flex">
+                    <!-- Correctly linked project pictures (Total: 100) -->
+                    <img src="./images/PROJECT (1).jpg" alt="Project Image 1" class="w-full h-96 object-cover active">
+                    <img src="./images/PROJECT (2).jpg" alt="Project Image 2" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (3).jpg" alt="Project Image 3" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (4).jpg" alt="Project Image 4" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (5).jpg" alt="Project Image 5" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (6).jpg" alt="Project Image 6" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (7).jpg" alt="Project Image 7" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (8).jpg" alt="Project Image 8" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (9).jpg" alt="Project Image 9" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (10).jpg" alt="Project Image 10" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (11).jpg" alt="Project Image 11" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (12).jpg" alt="Project Image 12" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (13).jpg" alt="Project Image 13" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (14).jpg" alt="Project Image 14" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (15).jpg" alt="Project Image 15" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (16).jpg" alt="Project Image 16" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (17).jpg" alt="Project Image 17" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (18).jpg" alt="Project Image 18" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (19).jpg" alt="Project Image 19" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (20).jpg" alt="Project Image 20" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (21).jpg" alt="Project Image 21" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (22).jpg" alt="Project Image 22" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (23).jpg" alt="Project Image 23" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (24).jpg" alt="Project Image 24" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (25).jpg" alt="Project Image 25" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (26).jpg" alt="Project Image 26" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (27).jpg" alt="Project Image 27" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (28).jpg" alt="Project Image 28" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (29).jpg" alt="Project Image 29" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (30).jpg" alt="Project Image 30" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (31).jpg" alt="Project Image 31" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (32).jpg" alt="Project Image 32" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (33).jpg" alt="Project Image 33" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (34).jpg" alt="Project Image 34" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (35).jpg" alt="Project Image 35" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (36).jpg" alt="Project Image 36" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (37).jpg" alt="Project Image 37" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (38).jpg" alt="Project Image 38" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (39).jpg" alt="Project Image 39" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (40).jpg" alt="Project Image 40" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (41).jpg" alt="Project Image 41" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (42).jpg" alt="Project Image 42" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (43).jpg" alt="Project Image 43" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (44).jpg" alt="Project Image 44" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (45).jpg" alt="Project Image 45" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (46).jpg" alt="Project Image 46" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (47).jpg" alt="Project Image 47" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (48).jpg" alt="Project Image 48" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (49).jpg" alt="Project Image 49" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (50).jpg" alt="Project Image 50" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (51).jpg" alt="Project Image 51" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (52).jpg" alt="Project Image 52" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (53).jpg" alt="Project Image 53" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (54).jpg" alt="Project Image 54" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (55).jpg" alt="Project Image 55" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (56).jpg" alt="Project Image 56" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (57).jpg" alt="Project Image 57" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (58).jpg" alt="Project Image 58" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (59).jpg" alt="Project Image 59" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (60).jpg" alt="Project Image 60" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (61).jpg" alt="Project Image 61" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (62).jpg" alt="Project Image 62" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (63).jpg" alt="Project Image 63" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (64).jpg" alt="Project Image 64" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (65).jpg" alt="Project Image 65" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (66).jpg" alt="Project Image 66" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (67).jpg" alt="Project Image 67" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (68).jpg" alt="Project Image 68" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (69).jpg" alt="Project Image 69" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (70).jpg" alt="Project Image 70" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (71).jpg" alt="Project Image 71" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (72).jpg" alt="Project Image 72" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (73).jpg" alt="Project Image 73" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (74).jpg" alt="Project Image 74" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (75).jpg" alt="Project Image 75" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (76).jpg" alt="Project Image 76" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (77).jpg" alt="Project Image 77" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (78).jpg" alt="Project Image 78" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (79).jpg" alt="Project Image 79" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (80).jpg" alt="Project Image 80" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (81).jpg" alt="Project Image 81" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (82).jpg" alt="Project Image 82" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (83).jpg" alt="Project Image 83" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (84).jpg" alt="Project Image 84" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (85).jpg" alt="Project Image 85" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (86).jpg" alt="Project Image 86" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (87).jpg" alt="Project Image 87" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (88).jpg" alt="Project Image 88" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (89).jpg" alt="Project Image 89" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (90).jpg" alt="Project Image 90" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (91).jpg" alt="Project Image 91" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (92).jpg" alt="Project Image 92" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (93).jpg" alt="Project Image 93" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (94).jpg" alt="Project Image 94" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (95).jpg" alt="Project Image 95" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (96).jpg" alt="Project Image 96" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (97).jpg" alt="Project Image 97" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (98).jpg" alt="Project Image 98" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (99).jpg" alt="Project Image 99" class="w-full h-96 object-cover">
+                    <img src="./images/PROJECT (100).jpg" alt="Project Image 100" class="w-full h-96 object-cover">
                 </div>
-                <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d58?q=80&w=2940&auto=format&fit=crop" alt="Large scale vehicle branding" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Fleet Vehicle Wrap</h3>
-                        <p class="text-gray-600">Designing and installing high-impact wraps for a company's vehicle fleet.</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1579783928624-a43657519a84?q=80&w=2940&auto=format&fit=crop" alt="LED digital signage" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Digital Signage Campaign</h3>
-                        <p class="text-gray-600">Developing dynamic content for a series of new digital billboards.</p>
-                    </div>
-                </div>
+                <!-- Carousel Navigation Buttons -->
+                <button class="carousel-button prev text-4xl text-primary-teal bg-black bg-opacity-50 p-3 rounded-full absolute left-4 top-1/2 transform -translate-y-1/2 hover:bg-opacity-75 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                </button>
+                <button class="carousel-button next text-4xl text-primary-teal bg-black bg-opacity-50 p-3 rounded-full absolute right-4 top-1/2 transform -translate-y-1/2 hover:bg-opacity-75 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                </button>
             </div>
         </div>
     </section>
 
-    <section class="py-16 md:py-24 px-4 bg-gray-50">
+    <!-- ======================== Testimonials Section ======================== -->
+    <section class="py-16 md:py-24 px-4 bg-dark">
         <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-primary-blue mb-6" data-aos="fade-up" data-aos-duration="1000">What Our Clients Say</h2>
+            <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6" data-aos="fade-up" data-aos-duration="1000">What Our Clients Say</h2>
             <div class="relative max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                <div class="testimonial-card p-8 rounded-lg bg-white shadow-lg mb-8">
-                    <p class="text-lg md:text-xl italic text-gray-700 leading-relaxed">"Khotot Al Baha delivered a fantastic project on time and within budget. Their team was professional and the quality of work was outstanding. Highly recommended!"</p>
-                    <p class="font-bold text-black mt-4">- Jane Doe, CEO of Business Corp</p>
+                <div class="testimonial-card p-8 rounded-lg bg-gray-900 shadow-lg border-2 border-primary-teal">
+                    <p class="text-lg md:text-xl italic text-gray-400 leading-relaxed">"Khotot Al Baha delivered a fantastic project on time and within budget. Their team was professional and the quality of work was outstanding. Highly recommended!"</p>
+                    <p class="font-bold text-light mt-4">- Jane Doe, CEO of Business Corp</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-16 md:py-24 px-4 bg-white">
+    <!-- ======================== Contact Section with Form and Details ======================== -->
+    <section id="contact" class="py-16 md:py-24 px-4 bg-dark">
         <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-primary-blue mb-6" data-aos="fade-up" data-aos-duration="1000">Contact Our Team</h2>
-            <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                We are always ready to discuss your next project. Fill out the form below or reach out directly.
+            <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6" data-aos="fade-up" data-aos-duration="1000">Contact Our Team</h2>
+            <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                Ready to transform your brand? Fill out the form below or reach out to our team directly.
             </p>
             
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg mb-12" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+            <div class="bg-gray-900 p-8 rounded-lg shadow-lg mb-12" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                 <form action="https://formspree.io/f/mqazqjzo" method="POST" class="space-y-6">
                     <div>
-                        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-blue focus:border-primary-blue" required>
+                        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required>
                     </div>
                     <div>
-                        <input type="tel" name="phone" placeholder="Your Phone Number" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-blue focus:border-primary-blue" required>
+                        <input type="tel" name="phone" placeholder="Your Phone Number" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required>
                     </div>
                     <div>
-                        <input type="email" name="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-blue focus:border-primary-blue" required>
+                        <input type="email" name="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required>
                     </div>
                     <div>
-                        <textarea name="message" rows="5" placeholder="Your Message or Inquiry Details" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-blue focus:border-primary-blue" required></textarea>
+                        <textarea name="message" rows="5" placeholder="Your Message or Inquiry Details" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-primary-blue text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-80 transition-colors">Send Message</button>
+                    <button type="submit" class="w-full bg-primary-teal text-dark font-bold py-3 px-6 rounded-md hover:bg-opacity-80 transition-colors">Send Message</button>
                 </form>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 text-left">
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                    <h3 class="text-2xl font-bold text-primary-yellow mb-2">Manager: Mr. Salman</h3>
-                    <p class="text-lg text-gray-700">
-                        For **project inquiries, new services, and supplier management**.
-                    </p>
-                    <div class="mt-4 flex items-center space-x-2">
-                        <svg class="w-6 h-6 text-primary-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10 2.21 0 4.254-.725 5.923-1.95l1.986.662c.168.056.345.088.528.088.29 0 .567-.09.803-.263.236-.174.385-.43.435-.72l.46-2.585c1.474-1.91 2.385-4.265 2.385-6.832C22 6.477 17.523 2 12 2zm3.328 15.655c-.256.442-.647.785-1.12.977-.472.192-1.002.24-1.554.148-1.58-.26-3.076-1.12-4.32-2.363-1.242-1.242-2.102-2.738-2.362-4.32-.092-.552-.044-1.082.148-1.554.192-.473.535-.864.977-1.12L10.35 9.77c.307-.179.645-.268.995-.268.35 0 .688.089.995.268l1.492.864c.25.145.423.407.49.728l.102.46c.07.315.012.63-.167.915l-.864 1.49c-.21.365-.21.82 0 1.185l.864 1.49c.179.307.268.645.268.995 0 .35-.089.688-.268.995L15.328 15.655z" /></svg>
-                        <a href="https://wa.me/971542437877" class="text-lg font-bold text-black hover:underline">+971 5 42 43 78 77</a>
-                    </div>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                    <h3 class="text-2xl font-bold text-primary-yellow mb-2">Owner: M. Gulam Mustafa</h3>
-                    <p class="text-lg text-gray-700">
-                        For **business partnerships and service complaints**.
-                    </p>
-                    <div class="mt-4 flex items-center space-x-2">
-                        <svg class="w-6 h-6 text-primary-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-2-12h4a1 1 0 010 2h-1v4a1 1 0 01-2 0v-4h-1a1 1 0 010-2z" /></svg>
-                        <a href="tel:+971525191838" class="text-lg font-bold text-black hover:underline">+971 52 51 91 838</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-gray-400 py-6 px-4 border-t-2 border-primary-yellow">
+    <!-- ======================== Footer Section ======================== -->
+    <footer class="bg-dark text-gray-500 py-6 px-4 border-t-2 border-primary-teal">
         <div class="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
             <p class="text-sm md:text-base">&copy; <span id="current-year"></span> Khotot Al Baha Advertising. All Rights Reserved.</p>
             <nav class="space-x-4 text-sm md:text-base">
-                <a href="#about" class="hover:text-primary-blue transition-colors duration-300">About Us</a>
-                <a href="#services" class="hover:text-primary-blue transition-colors duration-300">Services</a>
-                <a href="#contact" class="hover:text-primary-blue transition-colors duration-300">Contact</a>
+                <a href="#about" class="hover:text-primary-teal transition-colors duration-300">About Us</a>
+                <a href="#services" class="hover:text-primary-teal transition-colors duration-300">Services</a>
+                <a href="#contact" class="hover:text-primary-teal transition-colors duration-300">Contact</a>
             </nav>
         </div>
     </footer>
 
+    <!-- ======================== JavaScript for Animations and Functionality ======================== -->
+    
+    <!-- AOS (Animate on Scroll) initialization -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: true,
-            duration: 1000
+            once: false, // Ensures animations repeat on every scroll
+            duration: 1200, // Duration of the animation
         });
     </script>
     
+    <!-- JavaScript for the image carousel functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.carousel-images img');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            let currentIndex = 0;
+            let interval;
+    
+            function showImage(index) {
+                images.forEach((img, i) => {
+                    img.classList.remove('active');
+                });
+                images[index].classList.add('active');
+            }
+    
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
+    
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
+    
+            // Auto-play functionality
+            function startCarousel() {
+                interval = setInterval(nextImage, 2000); // Change image every 2 seconds
+            }
+    
+            function stopCarousel() {
+                clearInterval(interval);
+            }
+    
+            prevButton.addEventListener('click', () => {
+                stopCarousel();
+                prevImage();
+                startCarousel(); // Resume auto-play after manual navigation
+            });
+    
+            nextButton.addEventListener('click', () => {
+                stopCarousel();
+                nextImage();
+                startCarousel(); // Resume auto-play after manual navigation
+            });
+    
+            // Start the carousel on page load
+            showImage(currentIndex);
+            startCarousel();
+        });
+    </script>
+
+    <!-- JavaScript to automatically set the current year in the footer -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>

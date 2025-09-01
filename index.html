@@ -11,18 +11,23 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Base Styles */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0d0d0d;
-            color: #ffffff;
+            background-color: #f0f8ff; /* A very light sky blue/white */
+            color: #1a1a1a;
         }
-        .text-primary-teal { color: #00ADB5; }
-        .bg-primary-teal { background-color: #00ADB5; }
-        .text-dark { color: #161616; }
-        .bg-dark { background-color: #161616; }
-        .bg-gray-800 { background-color: #1a1a1a; }
-        .bg-gray-900 { background-color: #111111; }
-        .text-light { color: #f2f2f2; }
+
+        /* Color Palette */
+        .bg-sky-blue { background-color: #87CEEB; }
+        .text-sky-blue { color: #87CEEB; }
+        .bg-pale-yellow { background-color: #FFFACD; }
+        .text-pale-yellow { color: #FFFACD; }
+        .bg-dark-gray { background-color: #333333; }
+        .text-dark-gray { color: #333333; }
+        .bg-white { background-color: #ffffff; }
+
+        /* Navigation Links */
         .nav-link {
             position: relative;
             transition: color 0.3s;
@@ -34,12 +39,41 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: #00ADB5;
+            background-color: #87CEEB;
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
             width: 100%;
         }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: url('./images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-content {
+            z-index: 10;
+            padding: 2rem;
+        }
+
+        /* Project Carousel */
         .project-carousel {
             position: relative;
             overflow: hidden;
@@ -71,48 +105,75 @@
         }
         .prev-btn { left: 1rem; }
         .next-btn { right: 1rem; }
+
+        /* Contact Cards (Leadership Section) */
         .contact-card {
-            background-color: #1a1a1a;
+            background-color: #ffffff;
+            color: #1a1a1a;
             padding: 2.5rem;
             border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .contact-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         .contact-card h3 {
             font-size: 1.75rem;
             font-weight: 700;
-            color: #00ADB5;
+            color: #87CEEB;
             margin-bottom: 0.5rem;
         }
         .contact-card p {
             font-size: 1rem;
-            color: #ccc;
+            color: #666;
         }
         .contact-card .icon {
             font-size: 2.5rem;
-            color: #00ADB5;
+            color: #87CEEB;
             margin-bottom: 1rem;
         }
         .contact-card .contact-link {
             display: inline-block;
             margin-top: 1rem;
-            color: #ffffff;
+            color: #1a1a1a;
             font-weight: 600;
             transition: color 0.3s;
         }
         .contact-card .contact-link:hover {
-            color: #00ADB5;
+            color: #87CEEB;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .service-card .icon {
+            font-size: 3rem;
+            color: #87CEEB;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-weight: 600;
+            color: #87CEEB;
         }
     </style>
 </head>
-<body class="bg-dark text-light">
+<body class="bg-pale-yellow text-dark-gray">
 
-    <header class="bg-dark text-light py-4 shadow-lg fixed top-0 left-0 w-full z-50">
+    <header class="bg-white text-dark-gray py-4 shadow-lg fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2">
                 <img src="./images/LOGO.png" alt="Khotot Al Baha Advertising Logo" class="h-10 md:h-12">
@@ -124,23 +185,23 @@
                 <a href="#leadership" class="nav-link">Our Leadership</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
-            <a href="https://wa.me/971556855110" target="_blank" class="hidden md:block bg-primary-teal text-dark font-bold py-2 px-6 rounded-full hover:bg-opacity-80 transition-colors">
+            <a href="https://wa.me/971556855110" target="_blank" class="hidden md:block bg-sky-blue text-white font-bold py-2 px-6 rounded-full hover:bg-opacity-80 transition-colors">
                 Chat with Owner
             </a>
             <div class="md:hidden">
-                <button id="menu-btn" class="text-white focus:outline-none">
+                <button id="menu-btn" class="text-dark-gray focus:outline-none">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-dark px-4 py-6 mt-4 transition-all duration-300">
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-6 mt-4 transition-all duration-300">
             <nav class="flex flex-col space-y-4 text-center text-xl">
                 <a href="#about" class="nav-link block py-2">About Us</a>
                 <a href="#services" class="nav-link block py-2">Services</a>
                 <a href="#projects" class="nav-link block py-2">Projects</a>
                 <a href="#leadership" class="nav-link block py-2">Our Leadership</a>
                 <a href="#contact" class="nav-link block py-2">Contact</a>
-                <a href="https://wa.me/971556855110" target="_blank" class="block bg-primary-teal text-dark font-bold py-2 px-6 rounded-full hover:bg-opacity-80 transition-colors mt-4">
+                <a href="https://wa.me/971556855110" target="_blank" class="block bg-sky-blue text-white font-bold py-2 px-6 rounded-full hover:bg-opacity-80 transition-colors mt-4">
                     Chat with Owner
                 </a>
             </nav>
@@ -149,36 +210,36 @@
 
     <main class="pt-24">
 
-        <section class="h-screen bg-gray-900 flex flex-col justify-center items-center text-center px-4" 
-            style="background-image: url('./images/hero-bg.jpg'); background-size: cover; background-position: center;">
-            <div class="bg-black bg-opacity-60 p-8 rounded-lg">
-                <h1 class="text-6xl md:text-8xl font-bold text-primary-teal mb-4" data-aos="fade-up" data-aos-duration="1000">Khotot Al Baha Advertising</h1>
-                <p class="text-lg md:text-2xl text-light max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="text-6xl md:text-8xl font-bold text-pale-yellow mb-4" data-aos="fade-up" data-aos-duration="1000">Khotot Al Baha Advertising</h1>
+                <p class="text-lg md:text-2xl text-white max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     Innovative Advertising Solutions for a Modern World
                 </p>
                 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
-                    <a href="#contact" class="bg-primary-teal text-dark font-bold py-4 px-8 rounded-full text-xl hover:bg-opacity-80 transition-colors" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                    <a href="#contact" class="bg-sky-blue text-white font-bold py-4 px-8 rounded-full text-xl hover:bg-opacity-80 transition-colors" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                         Submit an Inquiry
                     </a>
-                    <a href="https://wa.me/971556855110" target="_blank" class="bg-gray-800 text-light font-bold py-4 px-8 rounded-full text-xl hover:bg-primary-teal hover:text-dark transition-colors" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                    <a href="https://wa.me/971556855110" target="_blank" class="bg-pale-yellow text-dark-gray font-bold py-4 px-8 rounded-full text-xl hover:bg-sky-blue hover:text-white transition-colors" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
                         Chat with Owner
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="py-16 md:py-24 px-4 bg-dark">
+        <section id="about" class="py-16 md:py-24 px-4 bg-white">
             <div class="container mx-auto max-w-6xl">
                 <div class="flex flex-col md:flex-row items-center md:space-x-12">
                     <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
-                        <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6">About Us</h2>
-                        <p class="text-lg md:text-xl text-gray-400 mb-6">
+                        <h2 class="text-5xl md:text-6xl font-extrabold text-sky-blue mb-6">About Us</h2>
+                        <p class="text-lg md:text-xl text-dark-gray mb-6">
                             Khotot Al Baha is built on one vision: to provide every advertising
                             solution under one roof combining creativity, technology, and
                             meticulous craftsmanship. We specialize in solutions that
                             turn your ideas into powerful visuals.
                         </p>
-                        <p class="text-lg md:text-xl text-gray-400">
+                        <p class="text-lg md:text-xl text-dark-gray">
                             With state-of-the-art printing equipment, cutting-edge fabrication facilities,
                             and a team of expert technicians and innovative designers, we deliver
                             advertising products that are not only visually stunning but also durable,
@@ -192,99 +253,99 @@
             </div>
         </section>
 
-        <section id="leadership" class="py-16 md:py-24 px-4 bg-gray-900">
+        <section id="leadership" class="py-16 md:py-24 px-4 bg-pale-yellow">
             <div class="container mx-auto text-center max-w-4xl">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6" data-aos="fade-up" data-aos-duration="1000">Meet Our Leadership</h2>
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-sky-blue mb-6" data-aos="fade-up" data-aos-duration="1000">Meet Our Leadership</h2>
+                <p class="text-lg md:text-xl text-dark-gray max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     Our team is committed to delivering excellence through every project.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="contact-card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-                        <img src="./images/owner-profile.jpg" alt="Owner Profile" class="rounded-full w-40 h-40 mx-auto mb-4 object-cover">
+                        <img src="./images/owner-profile.jpg" alt="Owner Profile" class="rounded-full w-40 h-40 mx-auto mb-4 object-cover border-4 border-sky-blue">
                         <h3>Owner</h3>
                         <p>Driven by vision, innovation, and client success.</p>
-                        <a href="tel:+971556855110" class="contact-link block mt-4"><i class="fas fa-phone-alt"></i> +971 55 685 5110</a>
-                        <a href="mailto:salman.activities@gmail.com" class="contact-link block"><i class="fas fa-envelope"></i> salman.activities@gmail.com</a>
-                        <a href="https://wa.me/971556855110" target="_blank" class="contact-link text-3xl mt-4 inline-block"><i class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+971569424660" class="contact-link block mt-4 text-sky-blue"><i class="fas fa-phone-alt"></i> +971 56 942 4660</a>
+                        <a href="https://wa.me/971569424660" target="_blank" class="contact-link text-3xl mt-4 inline-block mx-2 hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:salman.activities@gmail.com" class="contact-link block mt-2 text-sky-blue"><i class="fas fa-envelope"></i> salman.activities@gmail.com</a>
                     </div>
                     <div class="contact-card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">
-                        <img src="./images/manager-profile.jpg" alt="Manager Profile" class="rounded-full w-40 h-40 mx-auto mb-4 object-cover">
+                        <img src="./images/manager-profile.jpg" alt="Manager Profile" class="rounded-full w-40 h-40 mx-auto mb-4 object-cover border-4 border-sky-blue">
                         <h3>Manager</h3>
                         <p>Ensuring every project is completed with precision and quality.</p>
-                        <a href="tel:+971556855110" class="contact-link block mt-4"><i class="fas fa-phone-alt"></i> +971 55 685 5110</a>
-                        <a href="mailto:salman.activities@gmail.com" class="contact-link block"><i class="fas fa-envelope"></i> salman.activities@gmail.com</a>
-                        <a href="https://wa.me/971556855110" target="_blank" class="contact-link text-3xl mt-4 inline-block"><i class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+971569424660" class="contact-link block mt-4 text-sky-blue"><i class="fas fa-phone-alt"></i> +971 56 942 4660</a>
+                        <a href="https://wa.me/971569424660" target="_blank" class="contact-link text-3xl mt-4 inline-block mx-2 hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:salman.activities@gmail.com" class="contact-link block mt-2 text-sky-blue"><i class="fas fa-envelope"></i> salman.activities@gmail.com</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="py-16 md:py-24 px-4 bg-dark">
+        <section id="services" class="py-16 md:py-24 px-4 bg-white">
             <div class="container mx-auto text-center">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-12" data-aos="fade-up" data-aos-duration="1000">Our Complete Spectrum of Services</h2>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-sky-blue mb-12" data-aos="fade-up" data-aos-duration="1000">Our Complete Spectrum of Services</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
-                        <i class="fas fa-print text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Small Printing & Branding</h3>
-                        <p class="text-gray-400 mb-4">Business Cards, Flyers, Stickers, NCR Books, and more.</p>
-                        <a href="small-printing.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
+                        <i class="fas fa-print text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Small Printing & Branding</h3>
+                        <p class="text-dark-gray mb-4">Business Cards, Flyers, Stickers, NCR Books, and more.</p>
+                        <a href="small-printing.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
-                        <i class="fas fa-file-image text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Medium Printing & Display</h3>
-                        <p class="text-gray-400 mb-4">Roll-up Banners, Pop-up Stands, Standees, and Catalogs.</p>
-                        <a href="medium-printing.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
+                        <i class="fas fa-file-image text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Medium Printing & Display</h3>
+                        <p class="text-dark-gray mb-4">Roll-up Banners, Pop-up Stands, Standees, and Catalogs.</p>
+                        <a href="medium-printing.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
-                        <i class="fas fa-gift text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Corporate Gifts & Giveaways</h3>
-                        <p class="text-gray-400 mb-4">Pens, Mugs, T-Shirts, and custom merchandise.</p>
-                        <a href="corporate-gifts.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+                        <i class="fas fa-gift text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Corporate Gifts & Giveaways</h3>
+                        <p class="text-dark-gray mb-4">Pens, Mugs, T-Shirts, and custom merchandise.</p>
+                        <a href="corporate-gifts.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
-                        <i class="fas fa-building text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Interior Branding & Office</h3>
-                        <p class="text-gray-400 mb-4">Wall Murals, Frosted Glass Stickers, and Desk Signs.</p>
-                        <a href="interior-branding.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
+                        <i class="fas fa-building text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Interior Branding & Office</h3>
+                        <p class="text-dark-gray mb-4">Wall Murals, Frosted Glass Stickers, and Desk Signs.</p>
+                        <a href="interior-branding.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="1000">
-                        <i class="fas fa-bullhorn text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Outdoor Printing & Advertising</h3>
-                        <p class="text-gray-400 mb-4">Flex Banners, One-Way Vision, Flags, and Tents.</p>
-                        <a href="outdoor-printing.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="1000">
+                        <i class="fas fa-bullhorn text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Outdoor Printing & Advertising</h3>
+                        <p class="text-dark-gray mb-4">Flex Banners, One-Way Vision, Flags, and Tents.</p>
+                        <a href="outdoor-printing.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
-                        <i class="fas fa-car-side text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Vehicle Branding</h3>
-                        <p class="text-gray-400 mb-4">Full vehicle wrapping, partial branding, and fleet graphics.</p>
-                        <a href="vehicle-branding.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
+                        <i class="fas fa-car-side text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Vehicle Branding</h3>
+                        <p class="text-dark-gray mb-4">Full vehicle wrapping, partial branding, and fleet graphics.</p>
+                        <a href="vehicle-branding.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="1000">
-                        <i class="fas fa-sign text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Signage & Fabrication</h3>
-                        <p class="text-gray-400 mb-4">3D & Acrylic Letters, LED Signs, and Stainless Steel Signs.</p>
-                        <a href="signage-fabrication.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="1000">
+                        <i class="fas fa-sign text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Signage & Fabrication</h3>
+                        <p class="text-dark-gray mb-4">3D & Acrylic Letters, LED Signs, and Stainless Steel Signs.</p>
+                        <a href="signage-fabrication.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="800" data-aos-duration="1000">
-                        <i class="fas fa-tv text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Digital & LED Solutions</h3>
-                        <p class="text-gray-400 mb-4">LED Screens & Walls, Digital Kiosks, and Interactive Touchscreens.</p>
-                        <a href="digital-led.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="800" data-aos-duration="1000">
+                        <i class="fas fa-tv text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Digital & LED Solutions</h3>
+                        <p class="text-dark-gray mb-4">LED Screens & Walls, Digital Kiosks, and Interactive Touchscreens.</p>
+                        <a href="digital-led.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
-                    <div class="p-8 bg-gray-900 rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="1000">
-                        <i class="fas fa-th-large text-4xl text-primary-teal mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary-teal mb-4">Exhibition & Events</h3>
-                        <p class="text-gray-400 mb-4">Event stands, banners, and backdrops for exhibitions and events.</p>
-                        <a href="exhibition-events.html" class="text-primary-teal font-semibold hover:underline">View All →</a>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="1000">
+                        <i class="fas fa-th-large text-4xl icon mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Exhibition & Events</h3>
+                        <p class="text-dark-gray mb-4">Event stands, banners, and backdrops for exhibitions and events.</p>
+                        <a href="exhibition-events.html" class="text-sky-blue font-semibold hover:underline">View All →</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-16 md:py-24 px-4 bg-gray-900">
+        <section id="projects" class="py-16 md:py-24 px-4 bg-pale-yellow">
             <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6" data-aos="fade-up" data-aos-duration="1000">Our Projects</h2>
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-sky-blue mb-6" data-aos="fade-up" data-aos-duration="1000">Our Projects</h2>
+                <p class="text-lg md:text-xl text-dark-gray max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     A selection of our latest and most impactful work.
                 </p>
 
@@ -301,35 +362,35 @@
             </div>
         </section>
 
-        <section id="contact" class="py-16 md:py-24 px-4 bg-dark">
+        <section id="contact" class="py-16 md:py-24 px-4 bg-white">
             <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-primary-teal mb-6" data-aos="fade-up" data-aos-duration="1000">Contact Our Team</h2>
-                <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-sky-blue mb-6" data-aos="fade-up" data-aos-duration="1000">Contact Our Team</h2>
+                <p class="text-lg md:text-xl text-dark-gray mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     Ready to transform your brand? Fill out the form below or reach out to our team directly.
                 </p>
                 
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <div class="bg-pale-yellow p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                     <form action="mailto:salman.activities@gmail.com" method="post" enctype="text/plain" class="space-y-6">
                         <div>
-                            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required>
+                            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-sky-blue focus:border-sky-blue bg-white text-dark-gray" required>
                         </div>
                         <div>
-                            <input type="tel" name="phone" placeholder="Your Phone Number" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required>
+                            <input type="tel" name="phone" placeholder="Your Phone Number" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-sky-blue focus:border-sky-blue bg-white text-dark-gray" required>
                         </div>
                         <div>
-                            <input type="email" name="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required>
+                            <input type="email" name="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-sky-blue focus:border-sky-blue bg-white text-dark-gray" required>
                         </div>
                         <div>
-                            <textarea name="message" rows="5" placeholder="Your Message or Inquiry Details" class="w-full p-3 border border-gray-700 rounded-md focus:ring-2 focus:ring-primary-teal focus:border-primary-teal bg-gray-800 text-light" required></textarea>
+                            <textarea name="message" rows="5" placeholder="Your Message or Inquiry Details" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-sky-blue focus:border-sky-blue bg-white text-dark-gray" required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-primary-teal text-dark font-bold py-3 px-6 rounded-md hover:bg-opacity-80 transition-colors">Send Message</button>
+                        <button type="submit" class="w-full bg-sky-blue text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-80 transition-colors">Send Message</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <footer class="bg-white text-dark-gray py-6 text-center shadow-inner">
         <div class="container mx-auto px-4">
             <p>&copy; 2024 Khotot Al Baha Advertising. All Rights Reserved.</p>
         </div>

@@ -3,117 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Small Printing & Branding | Khoto Al Baha</title>
-    <meta name="description" content="Khoto Al Baha offers professional small printing and branding services, including business cards, flyers, and stationery.">
-    <link rel="icon" href="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/LOGO.png">
+    <title>Khatot Al Baha - Small Printing & Branding</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root {
-            --color-blue: #0A84D8;
-            --color-yellow: #FFD700;
+        /*
+         * GLOBAL STYLES & FONT
+         * This section defines the base styles for the page, including font and background.
+         */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
         }
-        .text-primary-blue { color: var(--color-blue); }
-        .bg-primary-blue { background-color: var(--color-blue); }
-        .border-primary-blue { border-color: var(--color-blue); }
-        .text-primary-yellow { color: var(--color-yellow); }
-        .bg-primary-yellow { background-color: var(--color-yellow); }
+
+        /*
+         * KEYFRAME ANIMATIONS
+         * These are custom CSS animations that bring the page to life.
+         * They control how elements appear on the screen.
+         */
+
+        /* Fade-in and slide up effect for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero text and buttons fade in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /*
+         * ANIMATION CLASSES
+         * Apply these classes to HTML elements to trigger the animations.
+         * The 'data-aos' attribute is a placeholder for a hypothetical 'Animate On Scroll' library.
+         * You would need to add a library like AOS for this to work, but the CSS is ready.
+         */
+        .animated-section {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animated-delay-100 { animation-delay: 0.1s; }
+        .animated-delay-200 { animation-delay: 0.2s; }
+        .animated-delay-300 { animation-delay: 0.3s; }
+        .animated-delay-400 { animation-delay: 0.4s; }
+        .animated-delay-500 { animation-delay: 0.5s; }
+        .animated-delay-600 { animation-delay: 0.6s; }
+        .animated-delay-700 { animation-delay: 0.7s; }
+        .animated-delay-800 { animation-delay: 0.8s; }
+
+        /* Hero section animations */
+        .hero-title { animation: fadeIn 1s ease-out forwards; }
+        .hero-subtitle { animation: fadeIn 1s ease-out 0.3s forwards; }
+
+        /*
+         * CUSTOM UTILITY CLASSES
+         * Tailwind classes are great, but some custom styles are needed for specific effects.
+         */
+        .navbar-shadow {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-primary {
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /*
+         * SECTION HEADERS
+         * A custom style for the lines under the main section titles.
+         */
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #0c4a6e; /* A dark blue */
+            margin: 0.5rem auto 1.5rem;
+            border-radius: 9999px;
+        }
+
+        /*
+         * HEADER STYLES
+         * This ensures the header is fixed and has a nice translucent effect.
+         */
+        .header-bg {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
     </style>
 </head>
-<body class="bg-white text-black font-sans">
+<body class="bg-gray-50 text-gray-800">
 
-    <header class="bg-black py-4 px-4 text-white">
-        <div class="container mx-auto max-w-7xl flex items-center justify-between">
-            <a href="index.html">
-                <img src="https://raw.githubusercontent.com/STMN0002/khatot-al-baha-website/main/NAME.png" alt="Khoto Al Baha Advertising Logo" class="h-8">
+    <!--
+     * ======================================
+     * HEADER & NAVIGATION
+     * ======================================
+     * Contains the company logo, name, and a responsive navigation menu.
+     */ -->
+    <header class="fixed top-0 left-0 right-0 z-50 header-bg navbar-shadow">
+        <nav class="container mx-auto px-4 flex items-center justify-between py-4">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/0C4A6E/FFFFFF?text=Logo" alt="Khatot Al Baha Logo" class="h-10 w-10">
+                <div>
+                    <span class="block font-bold text-xl leading-none">Khatot Al Baha</span>
+                    <span class="block text-sm leading-none text-sky-600">Advertising</span>
+                </div>
             </a>
-            <a href="index.html" class="text-primary-yellow hover:underline transition-colors">← Back to Homepage</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex space-x-6 text-gray-700 font-semibold">
+                <a href="index.html#about" class="hover:text-sky-600 transition-colors">About Us</a>
+                <a href="index.html#services" class="hover:text-sky-600 transition-colors">Services</a>
+                <a href="index.html#gallery" class="hover:text-sky-600 transition-colors">Gallery</a>
+                <a href="index.html#contact" class="hover:text-sky-600 transition-colors">Contact Us</a>
+                <a href="small-printing.html" class="hover:text-sky-600 transition-colors">Small Printing</a>
+                <a href="vehicle-branding.html" class="hover:text-sky-600 transition-colors">Vehicle Branding</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden flex items-center">
+                <button id="menu-button" class="text-gray-700 hover:text-sky-600 transition-colors">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden flex-col items-center bg-white navbar-shadow py-4">
+            <a href="index.html#about" class="py-2 text-gray-700 hover:text-sky-600 transition-colors">About Us</a>
+            <a href="index.html#services" class="py-2 text-gray-700 hover:text-sky-600 transition-colors">Services</a>
+            <a href="index.html#gallery" class="py-2 text-gray-700 hover:text-sky-600 transition-colors">Gallery</a>
+            <a href="index.html#contact" class="py-2 text-gray-700 hover:text-sky-600 transition-colors">Contact Us</a>
+            <a href="small-printing.html" class="py-2 text-gray-700 hover:text-sky-600 transition-colors">Small Printing</a>
+            <a href="vehicle-branding.html" class="py-2 text-gray-700 hover:text-sky-600 transition-colors">Vehicle Branding</a>
         </div>
     </header>
 
-    <section class="py-16 md:py-24 px-4">
-        <div class="container mx-auto max-w-7xl">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-primary-blue mb-6">Small Printing & Branding</h1>
-            <p class="text-lg md:text-xl text-black font-light leading-relaxed mb-8">
-                Every detail matters when it comes to branding. We provide high-quality, precise printing solutions that make a lasting impression, no matter the size of the job. From your very first business card to full corporate stationery sets, we ensure every piece reflects your brand's professionalism.
+    <!--
+     * ======================================
+     * HERO SECTION
+     * ======================================
+     * The main introductory section with a large heading and a brief description.
+     */ -->
+    <section class="bg-gradient-to-br from-sky-50 to-blue-100 py-32 md:py-48 flex items-center justify-center text-center text-gray-900">
+        <div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 hero-title">Small Printing & Branding</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto hero-subtitle">
+                Elevate your brand with our high-quality printing solutions for business essentials and promotional items.
             </p>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">Our Services Include:</h2>
-                    <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
-                        <li>Business Cards</li>
-                        <li>Letterheads & Envelopes</li>
-                        <li>Flyers & Brochures</li>
-                        <li>Stickers & Labels</li>
-                        <li>Certificates & Greeting Cards</li>
-                        <li>NCR Books (Invoices, Receipts)</li>
-                        <li>Paper Bags & Packaging Printing</li>
-                        <li>Posters & Menus</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1542838190-647d6e87f28e?q=80&w=2940&auto=format&fit=crop" alt="Small printing jobs" class="rounded-lg shadow-xl">
-                </div>
-            </div>
-
-            <div class="text-center mt-20">
-                <h2 class="text-4xl md:text-5xl font-bold text-primary-yellow mb-4">Our Recent Projects</h2>
-                <p class="text-lg text-gray-700 mb-8">
-                    Take a look at some of the branding and printing jobs we've completed.
+    <!--
+     * ======================================
+     * SMALL PRINTING SERVICES SECTION
+     * ======================================
+     * A grid of animated cards, each highlighting a specific service.
+     */ -->
+    <section id="services-list" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center animated-section">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">Our Printing Solutions</h2>
+                <p class="mt-4 text-gray-600 max-w-xl mx-auto">
+                    From business cards to large-scale banners, our team delivers precision and quality on every project.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <img src="https://images.unsplash.com/photo-1596526149868-3e4732159048?q=80&w=2940&auto=format&fit=crop" alt="Business card project" class="w-full h-auto rounded-lg shadow-md transition-transform transform hover:scale-105">
-                    <img src="https://images.unsplash.com/photo-1582234057630-9b43493e98eb?q=80&w=2940&auto=format&fit=crop" alt="Flyers and brochures" class="w-full h-auto rounded-lg shadow-md transition-transform transform hover:scale-105">
-                    <img src="https://images.unsplash.com/photo-1555523824-343ae6c518b0?q=80&w=2940&auto=format&fit=crop" alt="Custom label printing" class="w-full h-auto rounded-lg shadow-md transition-transform transform hover:scale-105">
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                <!-- Service Card 1 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-100">
+                    <i class="fas fa-id-card-alt text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Business Cards</h4>
+                    <p class="text-gray-600 text-sm">Design and printing for all your corporate and marketing collateral needs.</p>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-200">
+                    <i class="fas fa-file-alt text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Letterheads & Envelopes</h4>
+                    <p class="text-gray-600 text-sm">Professional stationery that reflects your brand's identity and professionalism.</p>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-300">
+                    <i class="fas fa-paper-plane text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Flyers & Brochures</h4>
+                    <p class="text-gray-600 text-sm">Creative and impactful designs to effectively promote your business.</p>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-400">
+                    <i class="fas fa-tags text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Stickers & Labels</h4>
+                    <p class="text-gray-600 text-sm">Custom-made stickers and labels for products, packaging, and branding.</p>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-500">
+                    <i class="fas fa-certificate text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Certificates & Greeting Cards</h4>
+                    <p class="text-gray-600 text-sm">Elegant designs for special occasions and official acknowledgements.</p>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-600">
+                    <i class="fas fa-book text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">NCR Books</h4>
+                    <p class="text-gray-600 text-sm">Custom invoices, receipts, and order books for streamlined business operations.</p>
+                </div>
+                
+                <!-- Service Card 7 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-700">
+                    <i class="fas fa-box-open text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Paper Bags & Packaging</h4>
+                    <p class="text-gray-600 text-sm">Branded paper bags and custom packaging solutions to enhance your brand's image.</p>
+                </div>
+                
+                <!-- Service Card 8 -->
+                <div class="p-8 bg-gray-100 rounded-2xl shadow-lg text-center service-card animated-section animated-delay-800">
+                    <i class="fas fa-receipt text-5xl text-sky-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Posters & Menus</h4>
+                    <p class="text-gray-600 text-sm">Eye-catching posters and professional menus for restaurants and events.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-16 md:py-24 px-4 bg-black text-white">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Contact Our Team</h2>
-            <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                We are always ready to discuss your next project. Feel free to reach out to our management.
-            </p>
-            <div class="grid md:grid-cols-2 gap-8 text-left mt-8">
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-primary-yellow mb-2">Owner: M. Gulam Mustafa</h3>
-                    <p class="text-lg text-gray-300">
-                        For business inquiries and partnerships.
-                    </p>
-                    <div class="mt-4 flex items-center space-x-2">
-                        <svg class="w-6 h-6 text-primary-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-2-12h4a1 1 0 010 2h-1v4a1 1 0 01-2 0v-4h-1a1 1 0 010-2z" /></svg>
-                        <a href="tel:+971525191838" class="text-lg font-bold text-white hover:underline">+971 52 51 91 838</a>
+    <!--
+     * ======================================
+     * CONTACT FORM SECTION
+     * ======================================
+     * A contact form for users to request a quote, with input fields and a submit button.
+     */ -->
+    <section id="contact" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4 animated-section">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">Get a Quote</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    Ready to start your next printing project? Contact us today to discuss your needs.
+                </p>
+            </div>
+            <div class="mt-12 max-w-3xl mx-auto p-8 bg-white rounded-3xl shadow-xl">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium">Your Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-600 focus:ring-sky-600 transition duration-200 mt-2" placeholder="John Doe">
                     </div>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-primary-yellow mb-2">Manager: Mr. Salman</h3>
-                    <p class="text-lg text-gray-300">
-                        For project management and daily operations.
-                    </p>
-                    <div class="mt-4 flex items-center space-x-2">
-                        <svg class="w-6 h-6 text-primary-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10 2.21 0 4.254-.725 5.923-1.95l1.986.662c.168.056.345.088.528.088.29 0 .567-.09.803-.263.236-.174.385-.43.435-.72l.46-2.585c1.474-1.91 2.385-4.265 2.385-6.832C22 6.477 17.523 2 12 2zm3.328 15.655c-.256.442-.647.785-1.12.977-.472.192-1.002.24-1.554.148-1.58-.26-3.076-1.12-4.32-2.363-1.242-1.242-2.102-2.738-2.362-4.32-.092-.552-.044-1.082.148-1.554.192-.473.535-.864.977-1.12L10.35 9.77c.307-.179.645-.268.995-.268.35 0 .688.089.995.268l1.492.864c.25.145.423.407.49.728l.102.46c.07.315.012.63-.167.915l-.864 1.49c-.21.365-.21.82 0 1.185l.864 1.49c.179.307.268.645.268.995 0 .35-.089.688-.268.995L15.328 15.655z" /></svg>
-                        <a href="https://wa.me/971542437877" class="text-lg font-bold text-white hover:underline">+971 5 42 43 78 77</a>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium">Email Address</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-600 focus:ring-sky-600 transition duration-200 mt-2" placeholder="john.doe@example.com">
                     </div>
-                </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 font-medium">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-600 focus:ring-sky-600 transition duration-200 mt-2" placeholder="Tell us about your printing needs..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-sky-600 text-white font-semibold py-4 rounded-lg shadow-md hover:bg-sky-700 transition-all duration-300 transform hover:scale-105 btn-primary">
+                        Request a Quote
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-gray-400 py-6 px-4 border-t-2 border-primary-yellow">
-        <div class="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
-            <p class="text-sm md:text-base">&copy; <span id="current-year"></span> Khoto Al Baha Advertising. All Rights Reserved.</p>
-            <nav class="space-x-4 text-sm md:text-base">
-                <a href="index.html#about" class="hover:text-primary-blue transition-colors">About Us</a>
-                <a href="index.html#services" class="hover:text-primary-blue transition-colors">Services</a>
-                <a href="index.html#contact" class="hover:text-primary-blue transition-colors">Contact</a>
-            </nav>
+    <!--
+     * ======================================
+     * FOOTER SECTION
+     * ======================================
+     * Contains copyright info, quick links, and contact details.
+     */ -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 grid md:grid-cols-4 gap-12">
+            <!-- About Section -->
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Khatot Al Baha</h4>
+                <p class="text-sm">
+                    Your trusted partner for comprehensive advertising solutions, from concept to flawless execution. We transform your vision into stunning visuals.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="small-printing.html" class="hover:text-sky-600 transition-colors">Small Printing</a></li>
+                    <li><a href="vehicle-branding.html" class="hover:text-sky-600 transition-colors">Vehicle Branding</a></li>
+                    <li><a href="index.html#services" class="hover:text-sky-600 transition-colors">Signage & Fabrication</a></li>
+                    <li><a href="index.html#services" class="hover:text-sky-600 transition-colors">Creative & Digital Media</a></li>
+                    <li><a href="index.html#services" class="hover:text-sky-600 transition-colors">Installation & Maintenance</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Contact Info</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fas fa-user-tie mr-2 text-sky-600"></i> Owner: M. Gulam Mustafa</li>
+                    <li><i class="fas fa-phone mr-2 text-sky-600"></i> Phone: +971 52 519 1838</li>
+                    <li><i class="fas fa-user-cog mr-2 text-sky-600"></i> Manager: Mr. Salman</li>
+                    <li><i class="fas fa-phone mr-2 text-sky-600"></i> Phone: +971 54 243 7877</li>
+                </ul>
+            </div>
+
+            <!-- Footer Logo (using a placeholder for the uploaded logo) -->
+            <div class="md:text-right">
+                <img src="https://placehold.co/150x150/0C4A6E/FFFFFF?text=KBA" alt="KBA Logo" class="h-32 w-auto mx-auto md:ml-auto md:mr-0">
+            </div>
+        </div>
+        <div class="container mx-auto px-4 text-center text-sm mt-8 pt-8 border-t border-gray-700">
+            <p>&copy; 2024 Khatot Al Baha Advertising. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!--
+     * ======================================
+     * JAVASCRIPT
+     * ======================================
+     * Handles mobile menu toggle and smooth scrolling.
+     */ -->
     <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // Select elements
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Toggle mobile menu on click
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // --- ANIMATION ON SCROLL LOGIC ---
+        // This is a simple implementation of a common 'Animate on Scroll' pattern.
+        // It checks if an animated element is in the viewport and adds the animation class.
+        const animatedElements = document.querySelectorAll('.animated-section');
+
+        const observerOptions = {
+            root: null, // viewport as the root
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+
     </script>
 
 </body>
